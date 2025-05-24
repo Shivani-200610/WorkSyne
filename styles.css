@@ -1,0 +1,366 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard {
+  padding: 2rem;
+}
+
+.quick-stats {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  flex: 1;
+  min-width: 180px;
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  background: #f5faff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.courses {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  padding: 1rem;
+  border-radius: 12px;
+  min-width: 220px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+}
+
+.card-icon {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 12px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #2A7DE1;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.3s ease;
+}
+
+.card-icon:hover {
+  transform: scale(1.05);
+}
+
+.progress-bar {
+  background: #e0e0e0;
+  height: 8px;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.progress-bar div {
+  background: #2A7DE1;
+  height: 100%;
+}
+
+.blue-text {
+  color: #2A7DE1;
+  font-weight: bold;
+}
+
+.source {
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 0.2rem;
+}
+
+header {
+  background-color: #2A7DE1;
+  color: white;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  margin: 0;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+header a i {
+  font-size: 1.2rem;
+}
+
+/* ==== Finish Profile Page Styles ==== */
+
+.profile-container {
+  max-width: 700px;
+  margin: 60px auto;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container h2 {
+  text-align: center;
+  color: #2A7DE1;
+  margin-bottom: 10px;
+}
+
+.profile-container .subtitle {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.profile-container label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6px;
+  margin-top: 20px;
+}
+
+.profile-container input[type="text"],
+.profile-container input[type="url"],
+.profile-container textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.profile-container textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.profile-container input[type="file"] {
+  margin-top: 10px;
+}
+
+.progress-container {
+  background: #e0e0e0;
+  border-radius: 30px;
+  height: 16px;
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 60%;
+  background: #2A7DE1;
+}
+
+.profile-container button {
+  background: #2A7DE1;
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 30px;
+  display: block;
+  width: 100%;
+}
+
+.profile-container button:hover {
+  background: #1a5ba3;
+}
+
+/* ==== My Social Story Page Styles ==== */
+
+:root {
+  --primary-color: #1e3a8a;
+  --primary-hover: #1d4ed8;
+  --bg-color: #f1f5f9;
+  --text-color: #1f2937;
+  --subtle-text: #6b7280;
+  --input-bg: #f9fafb;
+  --border-color: #d1d5db;
+  --success-bg: #ecfdf5;
+  --success-border: #10b981;
+  --success-text: #047857;
+}
+
+body {
+  font-family: 'Segoe UI', 'Tahoma', 'Geneva', 'Verdana', 'sans-serif';
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+}
+
+.story-container {
+  max-width: 640px;
+  background-color: #ffffff;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+}
+
+.story-container h2 {
+  text-align: center;
+  font-size: 28px;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.story-container .subtitle {
+  text-align: center;
+  color: var(--subtle-text);
+  font-size: 15px;
+  margin-bottom: 30px;
+}
+
+.story-container label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.story-container textarea,
+.story-container input[type="file"] {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  background-color: var(--input-bg);
+  font-size: 15px;
+  margin-top: 6px;
+  margin-bottom: 25px;
+  transition: border-color 0.3s;
+}
+
+.story-container textarea:focus,
+.story-container input[type="file"]:focus {
+  border-color: var(--primary-hover);
+  outline: none;
+}
+
+.story-container textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.story-container button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.story-container button:hover {
+  background-color: var(--primary-hover);
+}
+
+.success-message {
+  display: none;
+  background-color: var(--success-bg);
+  border-left: 4px solid var(--success-border);
+  color: var(--success-text);
+  padding: 16px;
+  margin-top: 25px;
+  border-radius: 8px;
+  font-size: 15px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 480px) {
+  .story-container {
+    padding: 25px;
+  }
+
+  .story-container h2 {
+    font-size: 24px;
+  }
+}
+
+/* Shared Header Style */
+header {
+  background-color: #2A7DE1;
+  color: white;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  margin-bottom: 60px;
+}
+
+header h1 {
+  font-family: 'Pacifico', 'cursive';
+  font-size: 2rem;
+  color: #fff;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  margin: 0;
+}
+
+header a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+header a i {
+  font-size: 1.2rem;
+}
+

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Search for Jobs!!</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style2.css" />
+  
+</head>
+<body>
+
+  <div class="sidebar-toggle" id="sidebarToggle">☰</div>
+
+  <div class="sidebar" id="sidebar">
+    <h3>Menu</h3>
+    <a href="employeeDashboard.html">Dashboard</a>
+    <a href="employeeSavedJobs.html">Saved Jobs</a>
+    <a href="employeeApplications.html">Applied</a>
+  </div>
+
+  <div class="dashboard">
+    <div class="notifications">🎉 You have 2 new job matches today!</div>
+    <h1>Search for Jobs !!</h1>
+
+    <div class="filter-section">
+      <input type="text" class="search-input" placeholder="Search Jobs..." onkeyup="filterJobs()">
+      <select class="filter-dropdown" onchange="filterJobs()">
+        <option value="">Select Location</option>
+        <option value="remote">Remote</option>
+        <option value="bangalore">Bangalore</option>
+        <option value="pune">Pune</option>
+        <option value="hyderabad">Hyderabad</option>
+        <option value="noida">Noida</option>
+        <option value="chennai">Chennai</option>
+      </select>
+      <select class="filter-dropdown" onchange="filterJobs()">
+        <option value="">Select Role</option>
+        <option value="frontend developer">Frontend Developer</option>
+        <option value="uiux designer">UI/UX Designer</option>
+        <option value="backend engineer">Backend Engineer</option>
+        <option value="cloud devops engineer">Cloud DevOps Engineer</option>
+        <option value="data scientist">Data Scientist</option>
+        <option value="ai research intern">AI Research Intern</option>
+      </select>
+    </div>
+
+    <!-- Recent Jobs Section -->
+    <div class="section">
+      <h2>Recent Jobs</h2>
+      <div class="jobs-container">
+        <div class="job-card" data-title="frontend developer" data-location="bangalore">
+          <img src="https://logo.clearbit.com/google.com" class="company-logo" />
+          <div class="job-title">Frontend Developer</div>
+          <div class="company">Google</div>
+          <div class="location">Bangalore, India</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 60%;"></div></div>
+          <button class="apply-btn" onclick="window.location.href='google.html'">Apply Now</button>
+        </div>
+
+        <div class="job-card" data-title="uiux designer" data-location="remote">
+          <img src="https://logo.clearbit.com/adobe.com" class="company-logo" />
+          <div class="job-title">UI/UX Designer</div>
+          <div class="company">Adobe</div>
+          <div class="location">Remote</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 30%;"></div></div>
+          <button class="apply-btn" onclick="window.location.href='adobe.html'">Apply Now</button>
+        </div>
+
+        <div class="job-card" data-title="backend engineer" data-location="hyderabad">
+          <img src="https://logo.clearbit.com/netflix.com" class="company-logo" />
+          <div class="job-title">Backend Engineer</div>
+          <div class="company">Netflix</div>
+          <div class="location">Hyderabad, India</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 45%;"></div></div>
+          <button class="apply-btn" onclick="window.location.href='netflix.html'">Apply Now</button>
+        </div>
+
+        <div class="job-card" data-title="devops engineer" data-location="pune">
+          <img src="https://logo.clearbit.com/amazon.com" alt="Amazon Logo" class="company-logo">
+          <div class="job-title">Cloud DevOps Engineer</div>
+          <div class="company">Amazon</div>
+          <div class="location">Pune</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 50%;"></div></div>
+          <button class="apply-btn" onclick="window.location.href='amazon.html'">Apply Now</button>
+        </div>
+
+        <div class="job-card" data-title="data scientist" data-location="noida">
+          <img src="https://logo.clearbit.com/microsoft.com" alt="Microsoft Logo" class="company-logo">
+          <div class="job-title">Data Scientist</div>
+          <div class="company">Microsoft</div>
+          <div class="location">Noida</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 20%;"></div></div>
+          <button class="apply-btn" onclick="window.location.href='microsoft.html'">Apply Now</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Saved Jobs Section -->
+    <div class="section">
+      <h2>Saved Jobs</h2>
+      <div class="jobs-container">
+        <div class="job-card" data-title="product manager" data-location="remote">
+          <img src="https://logo.clearbit.com/spotify.com" alt="Spotify Logo" class="company-logo">
+          <div class="job-title">Product Manager</div>
+          <div class="company">Spotify</div>
+          <div class="location">Remote</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+
+        <div class="job-card" data-title="ai research intern" data-location="san francisco">
+          <img src="https://logo.clearbit.com/openai.com" alt="OpenAI Logo" class="company-logo">
+          <div class="job-title">AI Research Intern</div>
+          <div class="company">OpenAI</div>
+          <div class="location">San Francisco</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 10%;"></div></div>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+
+        <div class="job-card" data-title="software engineer" data-location="chennai">
+          <img src="https://logo.clearbit.com/tcs.com" alt="TCS Logo" class="company-logo">
+          <div class="job-title">Software Engineer</div>
+          <div class="company">TCS</div>
+          <div class="location">Chennai</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+
+        <div class="job-card" data-title="ai ethics analyst" data-location="remote">
+          <img src="https://logo.clearbit.com/ibm.com" alt="IBM Logo" class="company-logo">
+          <div class="job-title">AI Ethics Analyst</div>
+          <div class="company">IBM</div>
+          <div class="location">Remote</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 5%;"></div></div>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+
+        <div class="job-card" data-title="qa tester" data-location="mumbai">
+          <img src="https://logo.clearbit.com/accenture.com" alt="Accenture Logo" class="company-logo">
+          <div class="job-title">Junior QA Tester</div>
+          <div class="company">Accenture</div>
+          <div class="location">Mumbai</div>
+          <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+          <button class="apply-btn">Apply Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    function filterJobs() {
+      var searchInput = document.getElementsByClassName("search-input")[0];
+      var filterDropdowns = document.getElementsByClassName("filter-dropdown");
+      var locationDropdown = filterDropdowns[0];
+      var roleDropdown = filterDropdowns[1];
+      var jobCards = document.getElementsByClassName("job-card");
+      
+      var searchText = searchInput.value.toLowerCase();
+      var selectedLocation = locationDropdown.value.toLowerCase();
+      var selectedRole = roleDropdown.value.toLowerCase();
+
+      for (var i = 0; i < jobCards.length; i++) {
+        var card = jobCards[i];
+        var title = card.getAttribute("data-title").toLowerCase();
+        var location = card.getAttribute("data-location").toLowerCase();
+
+        var matchesText = title.indexOf(searchText) !== -1;
+        var matchesLocation = selectedLocation === "" || location.indexOf(selectedLocation) !== -1;
+        var matchesRole = selectedRole === "" || title.indexOf(selectedRole) !== -1;
+
+        if (matchesText && matchesLocation && matchesRole) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      }
+    }
+
+    function toggleSidebar() {
+      var sidebar = document.getElementById("sidebar");
+      if (sidebar.className.indexOf("hidden") !== -1) {
+        sidebar.className = sidebar.className.replace("hidden", "").trim();
+      } else {
+        sidebar.className += " hidden";
+      }
+    }
+
+    // Assign the toggle function to the button's onclick
+    document.getElementById("sidebarToggle").onclick = toggleSidebar;
+  </script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Interview Feedback</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #222;
+    }
+
+    header {
+      background-color: #2A7DE1;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      margin: 0;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .container {
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+      color: #2A7DE1;
+    }
+
+    .feedback-card {
+      background-color: #f8f9fa;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .feedback-content {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f5faff; margin: 0; padding: 0;">
+  <header>
+    <h1>WorkSyne</h1>
+    <a href="employeeDashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+  </header>
+
+  <div style="max-width: 600px; margin: 60px auto; background: #ffffff; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);">
+    <h2 style="text-align: center; color: #1A5BA3;">Interview Feedback</h2>
+    <p style="text-align: center; color: #555;">Share your thoughts on the recent interview experience.</p>
+
+    <!-- Rating with radio buttons -->
+    <div style="margin-top: 25px;">
+      <label style="font-weight: bold;">Rate Your Interview Experience:</label><br><br>
+      <div style="display: flex; justify-content: space-between; max-width: 500px; margin: auto;">
+        <label><input type="radio" name="rating" value="1"> ⭐</label>
+        <label><input type="radio" name="rating" value="2"> ⭐⭐</label>
+        <label><input type="radio" name="rating" value="3"> ⭐⭐⭐</label>
+        <label><input type="radio" name="rating" value="4"> ⭐⭐⭐⭐</label>
+        <label><input type="radio" name="rating" value="5"> ⭐⭐⭐⭐⭐</label>
+      </div>
+    </div>
+
+    <!-- Feedback Text -->
+    <div style="margin-top: 20px;">
+      <label style="font-weight: bold;">Your Feedback:</label><br>
+      <textarea id="feedbackText" placeholder="Write detailed feedback here..." style="width: 100%; padding: 10px; margin-top: 8px; height: 100px; border-radius: 8px; border: 1px solid #ccc;"></textarea>
+    </div>
+
+    <!-- Additional Questions -->
+    <div style="margin-top: 20px;">
+      <label style="font-weight: bold;">Communication Skills (1-5):</label><br>
+      <input type="number" id="communication" min="1" max="5" placeholder="1 to 5" style="width: 100%; padding: 8px; margin-top: 8px; border-radius: 8px; border: 1px solid #ccc;">
+    </div>
+
+    <div style="margin-top: 20px;">
+      <label style="font-weight: bold;">Technical Knowledge (1-5):</label><br>
+      <input type="number" id="technical" min="1" max="5" placeholder="1 to 5" style="width: 100%; padding: 8px; margin-top: 8px; border-radius: 8px; border: 1px solid #ccc;">
+    </div>
+
+    <!-- Submit Button with Validation -->
+    <div style="text-align: center; margin-top: 30px;">
+        <button onclick="validateForm()" style="padding:10px 20px; background-color:#2A7DE1; color:white; border:none; border-radius:6px; cursor:pointer;">Submit Feedback</button>
+    </div>
+  </div>
+
+  <script>
+    function validateForm() {
+      const rating = document.querySelector('input[name="rating"]:checked');
+      const feedbackText = document.getElementById('feedbackText').value.trim();
+      const communication = document.getElementById('communication').value;
+      const technical = document.getElementById('technical').value;
+
+      if (!rating) {
+        alert('Please select a rating.');
+        return;
+      }
+
+      if (feedbackText === '') {
+        alert('Please provide your feedback.');
+        return;
+      }
+
+      if (!communication || communication < 1 || communication > 5) {
+        alert('Please rate Communication Skills between 1 and 5.');
+        return;
+      }
+
+      if (!technical || technical < 1 || technical > 5) {
+        alert('Please rate Technical Knowledge between 1 and 5.');
+        return;
+      }
+
+      alert('Feedback submitted successfully!');
+      window.location.href = 'thankyou.html';
+    }
+  </script>
+</body>
+</html>

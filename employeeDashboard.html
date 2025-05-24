@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WorkSyne Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">WorkSyne</div>
+    <div class="tagline">Where Work and Synergy Meet</div>
+    <input type="text" class="search" placeholder="Search...">
+    <div class="icons">
+      <i class="fas fa-bell"></i>
+      <i class="fas fa-user-circle"></i>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <section class="top-cards">
+      <!-- Existing Cards -->
+      <div class="card profile">
+        <div class="profile-header">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-EN44b_665SPZXNGIQlL4y8dX_xchS9gGlzgqsM1xs7k2OcoZiTHT1yDyIDF8Y3-wlOM&usqp=CAU" alt="Profile Picture" class="profile-pic">
+          <div>
+            <p><strong>Alex Morgan</strong></p>
+            <p>Your Profile is complete for 50%</p>
+          </div>
+        </div>
+        <div class="progress-bar"><div style="width: 50%;"></div></div>
+        <button onclick="window.location.href='employeeProfile.html'">Finish Your Profile</button>
+        <p class="next-step">Next: Add your Experience</p>
+      </div>
+    
+      <div class="card">
+        <img src="https://techmavesoftware.com/wp-content/uploads/2024/04/Social-Networking-Apps.png" alt="Social Story" class="card-icon">
+        <p><strong>My Social Story</strong></p>
+        <p>New Messages <span class="badge">4</span></p>
+        <button onclick="window.location.href='employeeSocial.html'">View</button>
+      </div>
+    
+      <div class="card">
+        <img src="https://mintbook.com/blog/wp-content/uploads/2019/09/Top-10-Secrets-to-Improve-Learning-Skills-min.png.webp" alt="My Learning" class="card-icon">
+        <p><strong>My Learning</strong></p>
+        <p>Essential Courses <span class="badge">3</span></p>
+        <button onclick="window.location.href='employeeLearning.html'">View</button>
+      </div>
+    
+      <div class="card">
+        <img src="https://cdni.iconscout.com/illustration/premium/thumb/job-seekers-illustration-download-in-svg-png-gif-file-formats--recruiting-applicants-members-application-online-interview-human-resources-pack-people-illustrations-6481468.png" alt="Jobs for Me" class="card-icon">
+        <p><strong>Jobs for Me</strong></p>
+        <p>New Jobs for You <span class="badge">10</span></p>
+        <button onclick="window.location.href='employeeJobs.html'">View</button>
+      </div>
+    
+      <!-- New Cards (Next Row) -->
+      <div class="card">
+        <img src="https://static.vecteezy.com/system/resources/previews/009/349/226/non_2x/3d-render-smartphone-with-checklist-application-free-png.png" alt="My Applications" class="card-icon">
+        <p><strong>My Applications</strong></p>
+        <p>You've Applied for <span class="badge">8</span> Jobs</p>
+        <button onclick="window.location.href='employeeApplications.html'">View Applications</button>
+      </div>
+    
+      <div class="card">
+        <img src="https://www.aihr.com/wp-content/uploads/interview-feedback-cover.jpg" alt="Interview Feedback" class="card-icon">
+        <p><strong>Interview Feedback</strong></p>
+        <p>Feedback from <span class="badge">2</span> Employers</p>
+        <button onclick="window.location.href='interviewFeedback.html'">Check Feedback</button>
+      </div>
+    
+      <div class="card">
+        <img src="https://www.freeiconspng.com/uploads/great-job-icon-png-17.png" alt="Saved Jobs" class="card-icon">
+        <p><strong>Saved Jobs</strong></p>
+        <p><span class="badge">5</span> Jobs Saved</p>
+        <button onclick="window.location.href='employeeSavedJobs.html'">View Saved Jobs </button>
+      </div>
+      <div class="card">
+        <img src="https://static.vecteezy.com/system/resources/previews/005/988/949/non_2x/blue-calendar-icon-free-vector.jpg" alt="Calendar Icon" class="card-icon">
+        <p><strong>Upcoming Events</strong></p>
+        <ul class="event-list">
+          <li><strong>May 6:</strong> Interview @ Infosys</li>
+          <li><strong>May 8:</strong> Resume Review Session</li>
+          <li><strong>May 10:</strong> Webinar: AI Careers</li>
+        </ul>
+        <button onclick="window.location.href='employeeCalender.html'">View Full Calendar</button>
+      </div>
+      
+    </section>
+    
+
+    <section class="charts">
+      <div class="chart-card">
+        <h4>🔥 Top Active Jobs</h4>
+        <p>This chart displays the most active job listings that are receiving the highest number of applications this week.</p>
+        <p>Use it to target trending job roles that align with your interests!</p>
+        <img src="dashboardLineGraph.png" id="jobsChart" alt="Line Graph for Active Jobs">
+      </div>
+
+      <div class="chart-card">
+        <h4>📊 Total Projects You're Part Of</h4>
+        <p>This section shows the number of ongoing collaborative or learning projects you've joined through the platform.</p>
+        <p>Stay engaged to enhance your resume with real-world experience!</p>
+        <img src="dashboardBarGraph.png" id="projectsChart" alt="Line Graph for Active Jobs">
+      </div>
+
+      <div class="chart-card">
+        <h4>👥 Gender Ratio of Competing Applicants</h4>
+        <p>This pie chart shows the ratio of male and female candidates who have applied to the same companies as you.</p>
+        <p>Understanding your competition can help you prepare better!</p>
+        <img src="dashboardPieGraph.png" id="employeeChart" alt="Line Graph for Active Jobs">
+        <p><strong>Male</strong> 75</p>
+        <p><strong>Female</strong> 25</p>
+      </div>
+      <section class="quick-stats">
+        <div class="stat-card">
+          <h4>New Applications</h4>
+          <p><strong>12</strong> Today</p>
+        </div>
+        <div class="stat-card">
+          <h4>Messages</h4>
+          <p><strong>4</strong> Unread</p>
+        </div>
+        <div class="stat-card">
+          <h4>Interviews Scheduled</h4>
+          <p><strong>3</strong> This Week</p>
+        </div>
+      
+        <!-- ✅ New Skill Tracker Card -->
+        <div class="stat-card">
+          <h4>🏅 Skill Achievements</h4>
+          <ul style="list-style: none; padding-left: 0;">
+            <li>✔️ Profile 50% Complete</li>
+            <li>🎯 Applied to 5 Jobs</li>
+            <li>📚 2 Courses Completed</li>
+          </ul>
+        </div>
+      
+        <!-- ✅ New Goal Tracker Card -->
+        <div class="stat-card">
+          <h4>🎯 Weekly Goal</h4>
+          <p>Apply to <strong>5 jobs</strong></p>
+          <progress value="3" max="5" style="width: 100%; height: 10px; border-radius: 5px;"></progress>
+          <p><em>You're almost there! 2 more to go.</em></p>
+        </div>
+      </section>
+      
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

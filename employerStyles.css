@@ -1,0 +1,261 @@
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+header {
+    background-color: #2A7DE1;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+header h1 {
+    font-family: 'Pacifico', cursive;
+    font-size: 2rem;
+    margin: 0;
+}
+
+header a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+nav {
+    background-color: #ffffff;
+    padding: 1.5rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 8rem;
+    justify-content: center;
+}
+
+nav ul li {
+    border-radius: 8px;
+    width: 25%;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+nav ul li:hover {
+    transform: scale(1.05);
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 1.2rem;
+    border-radius: 8px;
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+    background-color: #2A7DE1;
+}
+
+.container {
+    padding: 2rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h3 {
+    margin: 0;
+    font-size: 2rem;
+    color: #2A7DE1;
+}
+
+.stat-card p {
+    margin: 0.5rem 0 0;
+    color: #666;
+}
+
+.chart-card {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.chart-card img {
+    max-width: 100%;
+    height: auto;
+}
+
+.table-container {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f3f3f3;
+    font-weight: 600;
+}
+
+.status-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.status-pending { background-color: #fff4cc; color: #b38600; }
+.status-interviewed { background-color: #e3f0ff; color: #2A7DE1; }
+.status-rejected { background-color: #ffe5e5; color: #cc0000; }
+.status-accepted { background-color: #e0fbe4; color: #33aa44; }
+
+.action-buttons button {
+    padding: 0.5rem 1rem;
+    margin-right: 0.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.action-buttons button:hover:not(:disabled) {
+    opacity: 0.8;
+}
+
+.accept-btn {
+    background-color: #33aa44;
+    color: white;
+}
+
+.accept-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.reject-btn {
+    background-color: #cc0000;
+    color: white;
+}
+
+.reject-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.view-btn {
+    background-color: #2A7DE1;
+    color: white;
+}
+
+.view-btn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.job-form {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.job-form label {
+    display: block;
+    margin: 0.5rem 0 0.2rem;
+    font-weight: 500;
+}
+
+.job-form input,
+.job-form select,
+.job-form textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+}
+
+.job-form button {
+    background-color: #2A7DE1;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.job-form button:hover {
+    background-color: #1A5BA3;
+}
+
+.calendar-item {
+    background: #ffffff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-item h4 {
+    margin: 0 0 0.5rem;
+    color: #2A7DE1;
+}
+
+.calendar-item p {
+    margin: 0.2rem 0;
+}
+
+.applications-container {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+}
+
+.applications-table h2, .applications-table th {
+    color: #2A7DE1;
+}

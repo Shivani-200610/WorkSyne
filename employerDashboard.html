@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkSyne - Employer Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="employerStyles.css">
+</head>
+<body>
+    <header>
+        <h1>WorkSyne</h1>
+        <a>Employer Dashboard</a>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="employerDashboard.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="employerPostJob.html"><i class="fas fa-plus"></i> Post Job</a></li>
+            <li><a href="employerCandidate.html"><i class="fas fa-users"></i> Candidate</a></li>
+            <li><a href="employerCalender.html"><i class="fas fa-calendar"></i> Calendar</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>12</h3>
+                <p>Active Jobs</p>
+            </div>
+            <div class="stat-card">
+                <h3>245</h3>
+                <p>Applications</p>
+            </div>
+            <div class="stat-card">
+                <h3>32</h3>
+                <p>Interviews</p>
+            </div>
+            <div class="stat-card">
+                <h3>8</h3>
+                <p>Hired</p>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="chart-card">
+                <h3>📊 Application Statistics</h3>
+                <p>Track the number of applications received for each job posting.</p>
+                <img src="dashBarGraph.png" alt="Application Statistics Chart">
+            </div>
+            <div class="chart-card">
+                <h3>👥 Candidate Demographics</h3>
+                <p>View the distribution of candidates by experience level.</p>
+                <img src="dashPieGraph.png" alt="Candidate Demographics Chart">
+            </div>
+            <div class="chart-card">
+                <h3>🎯 Hiring Progress</h3>
+                <p>Monitor your hiring goals and progress.</p>
+                <img src="dashLineGraph.png" alt="Hiring Progress Chart">
+            </div>
+        </div>
+
+        <div class="table-container">
+            <h3>Recent Applications</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Candidate</th>
+                        <th>Job Title</th>
+                        <th>Status</th>
+                        <th>Date Applied</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sarah Johnson</td>
+                        <td>UX Designer</td>
+                        <td><span class="status-badge status-pending">Pending</span></td>
+                        <td>May 1, 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Mike Brown</td>
+                        <td>Developer</td>
+                        <td><span class="status-badge status-interviewed">Interviewed</span></td>
+                        <td>May 3, 2025</td>
+                    </tr>
+                    <tr>
+                        <td>Emily Smith</td>
+                        <td>Project Manager</td>
+                        <td><span class="status-badge status-rejected">Rejected</span></td>
+                        <td>May 4, 2025</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

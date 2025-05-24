@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Social Story</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/> 
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>WorkSyne</h1>
+    <h2>My Social Story</h2>
+    <a href="employeeDashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+  </header>
+
+  <div class="story-container">
+    <p class="subtitle">Tell the world who you are beyond your resume ✨</p>
+
+    <form id="storyForm" onsubmit="submitStory(event)">
+      <div class="form-group">
+        <label for="description">Describe Yourself</label>
+        <textarea id="description" placeholder="Tell your story, interests, and goals..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="video-upload">Upload Profile Video (optional)</label>
+        <input id="video-upload" type="file" accept="video/*">
+      </div>
+
+      <button type="submit">Post Story</button>
+    </form>
+
+    <div class="success-message" id="successMsg">
+      ✅ Your story has been successfully submitted!
+    </div>
+  </div>
+
+  <script>
+    function submitStory(e) {
+      e.preventDefault(); // Stop form from submitting normally
+
+      var textarea = document.getElementById('description');
+      var story = textarea.value.trim();
+      var successMsg = document.getElementById('successMsg');
+      var videoInput = document.getElementById('video-upload');
+
+      if (story === "") {
+        alert("Please describe yourself before posting.");
+        textarea.focus();
+        return false;
+      }
+
+      successMsg.style.display = "block";
+      textarea.value = "";
+      videoInput.value = "";
+
+      setTimeout(function () {
+        successMsg.style.display = "none";
+      }, 5000);
+
+      return false;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Applications</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffffff;
+      color: #111;
+    }
+
+    header {
+      background-color: #2A7DE1;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 2rem;
+      color: #fff;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+      margin: 0;
+    }
+
+    header a {
+      color: white;
+      text-decoration: none;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    header a i {
+      font-size: 1.2rem;
+    }
+
+    .container {
+      padding: 2rem;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-input{
+      margin-left: 816px;
+    }
+
+    .search-input,
+    .filter-sort select,
+    .filter-sort button {
+      padding: 0.6rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: #f3f3f3;
+      color: #111;
+    }
+
+    .filter-sort {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-sort button {
+      background-color: #2A7DE1;
+      color: white;
+      cursor: pointer;
+    }
+
+    .filter-sort button:hover {
+      background-color: #1A5BA3;
+    }
+
+    .applications-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .job-card {
+      background: #ffffff;
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      padding: 1.2rem;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.04);
+      transition: box-shadow 0.2s;
+    }
+
+    .job-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .job-header h3 {
+      margin: 0;
+      font-size: 1.1rem;
+      color: #2A7DE1;
+    }
+
+    .company {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .status {
+      font-size: 0.75rem;
+      padding: 0.4rem 0.7rem;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .status.applied { background-color: #e3f0ff; color: #2A7DE1; }
+    .status.reviewing { background-color: #fff4cc; color: #b38600; }
+    .status.rejected { background-color: #ffe5e5; color: #cc0000; }
+    .status.accepted { background-color: #e0fbe4; color: #33aa44; }
+
+    .details {
+      margin-top: 0.6rem;
+      font-size: 0.85rem;
+      color: #666;
+    }
+
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1rem;
+    }
+
+    .actions button {
+      padding: 0.5rem 0.8rem;
+      font-size: 0.85rem;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .actions .download {
+      background-color: #2A7DE1;
+      color: #ffffff;
+    }
+
+    .actions .download:hover {
+      background-color: #1A5BA3;
+    }
+
+    .actions .withdraw {
+      background-color: transparent;
+      color: #666;
+      border: 1px solid #ccc;
+    }
+
+    .actions .withdraw:hover {
+      background-color: #f0f0f0;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>WorkSyne</h1>
+    <h2>My Applications</h2>
+    <a href="employeeDashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+  </header>
+
+  <div class="container">
+    <div class="top-bar">
+      <form id="filterForm" onsubmit="showApplications(); return false;">
+        <div class="filter-sort">
+          <select id="statusFilter" name="status">
+            <option value="all">Status: All</option>
+            <option value="applied">Applied</option>
+            <option value="reviewing">Reviewing</option>
+            <option value="accepted">Accepted</option>
+            <option value="rejected">Rejected</option>
+          </select>
+          <select id="sortOrder" name="sort">
+            <option value="newest">Newest First</option>
+            <option value="oldest">Oldest First</option>
+          </select>
+          <button type="submit">Apply</button>
+          <input type="text" id="searchInput" name="search" class="search-input" placeholder="Search by job title or company...">
+        </div>
+      </form>
+    </div>
+
+    <div class="applications-grid" id="applicationsList">
+      <div class="job-card" data-title="Frontend Developer" data-company="TechNova Pvt Ltd" data-status="reviewing" data-date="2025-04-10" data-location="Remote">
+        <div class="job-header">
+          <div>
+            <h3>Frontend Developer</h3>
+            <p class="company">TechNova Pvt Ltd</p>
+          </div>
+          <span class="status reviewing">Reviewing</span>
+        </div>
+        <div class="details">
+          <p><strong>Applied On:</strong> 4/10/2025</p>
+          <p><strong>Location:</strong> Remote</p>
+        </div>
+        <div class="actions">
+          <button class="download-btn" onclick="location.href='download_application.html'">Download</button>
+          <button class="withdraw-btn" onclick="location.href='withdraw_application.html'">Withdraw</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-title="UI/UX Designer" data-company="DesignBloom" data-status="accepted" data-date="2025-03-30" data-location="Bangalore, India">
+        <div class="job-header">
+          <div>
+            <h3>UI/UX Designer</h3>
+            <p class="company">DesignBloom</p>
+          </div>
+          <span class="status accepted">Accepted</span>
+        </div>
+        <div class="details">
+          <p><strong>Applied On:</strong> 3/30/2025</p>
+          <p><strong>Location:</strong> Bangalore, India</p>
+        </div>
+        <div class="actions">
+          <button class="download-btn" onclick="location.href='download_application.html'">Download</button>
+          <button class="withdraw-btn" onclick="location.href='withdraw_application.html'">Withdraw</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-title="Data Analyst Intern" data-company="DataQuotient" data-status="rejected" data-date="2025-02-25" data-location="Hyderabad">
+        <div class="job-header">
+          <div>
+            <h3>Data Analyst Intern</h3>
+            <p class="company">DataQuotient</p>
+          </div>
+          <span class="status rejected">Rejected</span>
+        </div>
+        <div class="details">
+          <p><strong>Applied On:</strong> 2/25/2025</p>
+          <p><strong>Location:</strong> Hyderabad</p>
+        </div>
+        <div class="actions">
+          <button class="download-btn" onclick="location.href='download_application.html'">Download</button>
+          <button class="withdraw-btn" onclick="location.href='withdraw_application.html'">Withdraw</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-title="Backend Developer" data-company="CodeCrate" data-status="applied" data-date="2025-04-12" data-location="Remote">
+        <div class="job-header">
+          <div>
+            <h3>Backend Developer</h3>
+            <p class="company">CodeCrate</p>
+          </div>
+          <span class="status applied">Applied</span>
+        </div>
+        <div class="details">
+          <p><strong>Applied On:</strong> 4/12/2025</p>
+          <p><strong>Location:</strong> Remote</p>
+        </div>
+        <div class="actions">
+          <button class="download-btn" onclick="location.href='download_application.html'">Download</button>
+          <button class="withdraw-btn" onclick="location.href='withdraw_application.html'">Withdraw</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-title="Project Coordinator" data-company="AgileCore" data-status="reviewing" data-date="2025-04-02" data-location="Pune">
+        <div class="job-header">
+          <div>
+            <h3>Project Coordinator</h3>
+            <p class="company">AgileCore</p>
+          </div>
+          <span class="status reviewing">Reviewing</span>
+        </div>
+        <div class="details">
+          <p><strong>Applied On:</strong> 4/2/2025</p>
+          <p><strong>Location:</strong> Pune</p>
+        </div>
+        <div class="actions">
+          <button class="download-btn" onclick="location.href='download_application.html'">Download</button>
+          <button class="withdraw-btn" onclick="location.href='withdraw_application.html'">Withdraw</button>
+        </div>
+      </div>
+
+      <div class="job-card" data-title="AI Research Intern" data-company="InnoAI" data-status="applied" data-date="2025-03-20" data-location="Remote">
+        <div class="job-header">
+          <div>
+            <h3>AI Research Intern</h3>
+            <p class="company">InnoAI</p>
+          </div>
+          <span class="status applied">Applied</span>
+        </div>
+        <div class="details">
+          <p><strong>Applied On:</strong> 3/20/2025</p>
+          <p><strong>Location:</strong> Remote</p>
+        </div>
+        <div class="actions">
+          <button class="download-btn" onclick="location.href='download_application.html'">Download</button>
+          <button class="withdraw-btn" onclick="location.href='withdraw_application.html'">Withdraw</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showApplications() {
+      var searchText = document.getElementById("searchInput").value.toLowerCase();
+      var status = document.getElementById("statusFilter").value;
+      var sortOrder = document.getElementById("sortOrder").value;
+
+      var jobCards = document.getElementsByClassName("job-card");
+      var cardsArray = [];
+
+      for (var i = 0; i < jobCards.length; i++) {
+        cardsArray.push(jobCards[i]);
+      }
+
+      for (var i = 0; i < cardsArray.length; i++) {
+        var card = cardsArray[i];
+        var title = card.getAttribute("data-title").toLowerCase();
+        var company = card.getAttribute("data-company").toLowerCase();
+        var cardStatus = card.getAttribute("data-status");
+
+        var titleMatch = title.indexOf(searchText) !== -1;
+        var companyMatch = company.indexOf(searchText) !== -1;
+        var statusMatch = status === "all" || cardStatus === status;
+
+        if ((titleMatch || companyMatch) && statusMatch) {
+          card.classList.remove("hidden");
+        } else {
+          card.classList.add("hidden");
+        }
+      }
+
+      cardsArray.sort(function(a, b) {
+        var dateA = new Date(a.getAttribute("data-date"));
+        var dateB = new Date(b.getAttribute("data-date"));
+        return sortOrder === "newest" ? dateB - dateA : dateA - dateB;
+      });
+
+      var container = document.getElementById("applicationsList");
+      container.innerHTML = "";
+      for (var i = 0; i < cardsArray.length; i++) {
+        container.appendChild(cardsArray[i]);
+      }
+    }
+
+    showApplications();
+  </script>
+</body>
+</html>

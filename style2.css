@@ -1,0 +1,234 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #f0f2f5;
+  color: #333;
+  min-height: 100vh;
+  padding-left: 220px;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 200px;
+  height: 100vh;
+  background: #ffffff;
+  border-right: 1px solid #ddd;
+  padding: 30px 20px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.sidebar h3 {
+  color: #2A7DE1;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.sidebar a {
+  display: block;
+  text-decoration: none;
+  color: #2A7DE1;
+  margin-bottom: 15px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.sidebar a:hover {
+  color: #1A5BA3;
+}
+
+/* Dashboard */
+.dashboard {
+  background: #ffffff;
+  border-radius: 20px;
+  margin: 40px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid #eee;
+}
+
+h1 {
+  color: #2A7DE1;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-size: 1.5rem;
+  color: #2A7DE1;
+  margin-bottom: 15px;
+}
+
+/* Filters */
+.filter-section {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.search-input,
+.filter-dropdown {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: #ffffff;
+  color: #333;
+}
+
+/* Course Cards */
+.jobs-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.job-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  width: 280px;
+  color: #333;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+  border: 1px solid #ddd;
+  transition: transform 0.3s ease, opacity 0.5s;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInCard 0.6s ease forwards;
+}
+
+@keyframes fadeInCard {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.job-card:hover {
+  transform: scale(1.03);
+  background-color: #f5faff;
+}
+
+/* Logo */
+.company-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  padding: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Text Content */
+.job-title {
+  font-size: 18px;
+  color: #2A7DE1;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.company {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.location {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Progress */
+.progress-bar {
+  margin-top: 12px;
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #2A7DE1;
+  width: 50%;
+  animation: fill 1s ease forwards;
+}
+
+@keyframes fill {
+  from {
+    width: 0;
+  }
+  to {
+    width: 50%;
+  }
+}
+
+/* Notification Box */
+.notifications {
+  animation: slideDown 0.6s ease forwards;
+  background: #2A7DE1;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 12px;
+  width: fit-content;
+  margin: 10px auto 30px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Button */
+.apply-btn {
+  margin-top: 12px;
+  background-color: #2A7DE1;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.apply-btn:hover {
+  background-color: #1A5BA3;
+}
+/* Basic sidebar toggle style */
+    .sidebar-toggle {
+      font-size: 24px;
+      cursor: pointer;
+      padding: 10px;
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 1000;
+      background: #2A7DE1;
+      color: #fff;
+      border-radius: 5px;
+    }
+
+    .sidebar {
+      transition: transform 0.3s ease;
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }

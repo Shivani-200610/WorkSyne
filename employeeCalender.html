@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Upcoming Events</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <header>
+    <h1>WorkSyne</h1>
+    <h2>My Calendar</h2>
+    <a href="employeeDashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+  </header>
+
+  <div class="container">
+    <div id="calendar">
+      <!-- Events will be injected here -->
+    </div>
+  </div>
+
+  <script>
+    var events = [
+      { title: "Resume Review Session", date: "2025-05-07", time: "3:00 PM" },
+      { title: "Tech Interview Webinar", date: "2025-05-10", time: "5:00 PM" },
+      { title: "Job Fair - Bangalore", date: "2025-05-15", time: "10:00 AM" },
+      { title: "Networking Meetup", date: "2025-05-15", time: "2:00 PM" },
+      { title: "AI Workshop", date: "2025-05-20", time: "11:00 AM" },
+    ];
+
+    function groupByDate(eventsArray) {
+      var grouped = {};
+      for (var i = 0; i < eventsArray.length; i++) {
+        var event = eventsArray[i];
+        if (!grouped[event.date]) {
+          grouped[event.date] = [];
+        }
+        grouped[event.date].push(event);
+      }
+      return grouped;
+    }
+
+    function renderEvents() {
+      var calendar = document.getElementById("calendar");
+      var groupedEvents = groupByDate(events);
+      var dateKeys = Object.keys(groupedEvents).sort();
+      var calendarHTML = '';
+
+      for (var i = 0; i < dateKeys.length; i++) {
+        var date = dateKeys[i];
+        var formattedDate = new Date(date).toLocaleDateString(undefined, {
+          weekday: 'long', year: 'numeric', month: 'short', day: 'numeric'
+        });
+
+        var eventCardsHTML = '';
+        var eventsForDate = groupedEvents[date];
+        
+        for (var j = 0; j < eventsForDate.length; j++) {
+          var ev = eventsForDate[j];
+          eventCardsHTML += '<div class="event-card">' +
+            '<p class="event-title">' + ev.title + '</p>' +
+            '<p class="event-time"><i class="fas fa-clock"></i> ' + ev.time + '</p>' +
+          '</div>';
+        }
+
+        calendarHTML += '<div class="event-group">' +
+          '<div class="event-date">' + formattedDate + '</div>' +
+          eventCardsHTML +
+        '</div>';
+      }
+
+      calendar.innerHTML = calendarHTML;
+    }
+
+    window.onload = renderEvents;
+  </script>
+</body>
+</html>

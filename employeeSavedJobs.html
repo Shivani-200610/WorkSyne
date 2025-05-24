@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Saved Jobs</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style1.css" />
+</head>
+<body>
+  <header>
+    <h1>WorkSyne</h1>
+    <h2>Saved Jobs</h2>
+    <a href="employeeDashboard.html"><i class="fas fa-home"></i> Dashboard</a>
+  </header>
+
+  <div class="container">
+    <div class="top-bar">
+      <input type="text" id="search" placeholder="Search by job title or company..." class="search-input" onkeyup="renderSavedJobs()" />
+      <div class="filter-sort">
+        <select id="locationFilter" onchange="renderSavedJobs()">
+          <option value="all">Location: All</option>
+          <option value="remote">Remote</option>
+          <option value="bangalore">Bangalore</option>
+          <option value="pune">Pune</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="jobs-grid" id="savedJobs">
+      <!-- Job cards injected here -->
+    </div>
+  </div>
+
+  <script>
+    var savedJobs = [
+      { title: "Machine Learning Intern", company: "AI Innovators", location: "Remote", date: "2025-04-18" },
+      { title: "DevOps Engineer", company: "CloudCore", location: "Bangalore", date: "2025-04-15" },
+      { title: "Technical Writer", company: "DocuTech", location: "Pune", date: "2025-04-10" },
+      { title: "Frontend Intern", company: "WebNest", location: "Remote", date: "2025-04-08" }
+    ];
+
+    function renderSavedJobs() {
+      var search = document.getElementById("search").value.toLowerCase();
+      var location = document.getElementById("locationFilter").value;
+      var container = document.getElementById("savedJobs");
+
+      var filtered = [];
+      for (var i = 0; i < savedJobs.length; i++) {
+        var job = savedJobs[i];
+        var matchesSearch = job.title.toLowerCase().indexOf(search) !== -1 || 
+        job.company.toLowerCase().indexOf(search) !== -1;
+        var matchesLocation = location === "all" || 
+        job.location.toLowerCase() === location;
+        if (matchesSearch && matchesLocation) {
+          filtered.push(job);
+        }
+      }
+
+      var jobsHTML = '';
+      for (var i = 0; i < filtered.length; i++) {
+        var job = filtered[i];
+        jobsHTML += '<div class="job-card">' +
+          '<div class="job-header">' +
+            '<div>' +
+              '<h3>' + job.title + '</h3>' +
+              '<p class="company">' + job.company + '</p>' +
+            '</div>' +
+          '</div>' +
+          '<div class="details">' +
+            '<p><strong>Saved On:</strong> ' + new Date(job.date).toLocaleDateString() + '</p>' +
+            '<p><strong>Location:</strong> ' + job.location + '</p>' +
+          '</div>' +
+          '<div class="actions">' +
+            '<a href="applicationSuccessful.html" class="apply">Apply Now</a>' +
+          '</div>' +
+        '</div>';
+      }
+
+      container.innerHTML = jobsHTML;
+    }
+
+    // Initialize the page when it loads
+    window.onload = renderSavedJobs;
+  </script>
+</body>
+</html>

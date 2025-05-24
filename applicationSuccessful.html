@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Application Submitted - WorkSyne</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0f2ff, #ffffff);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 16px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      text-align: center;
+      max-width: 520px;
+      animation: fadeIn 0.6s ease-in-out;
+      z-index: 2;
+      position: relative;
+    }
+
+    .card img {
+      width: 70px;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      color: #1a73e8;
+      margin-bottom: 0.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #444;
+      margin: 0.5rem 0;
+    }
+
+    .btn {
+      margin-top: 1.5rem;
+      background: #1a73e8;
+      color: white;
+      padding: 0.8rem 1.6rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      background: #155ab6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+
+<div class="card">
+  <img src="https://cdn-icons-png.flaticon.com/512/1055/1055183.png" alt="Success Icon" />
+  <h1>🎉 Application Submitted!</h1>
+  <p>Your application has been successfully submitted.</p>
+  <p>You'll receive updates on next steps via your registered email.</p>
+  <p>Thank you for using <strong>WorkSyne</strong> — powering your career journey!</p>
+<button class="btn" onclick="window.location.href='employeeDashboard.html'">Back To Dashboard</button>
+</div>
+
+<script>
+  // Simple Confetti Effect
+  const canvas = document.getElementById('confetti');
+  const ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const confetti = Array.from({ length: 100 }).map(() => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * -canvas.height,
+    r: Math.random() * 6 + 2,
+    color: `hsl(${Math.random() * 360}, 70%, 60%)`,
+    speed: Math.random() * 2 + 1,
+  }));
+
+  function drawConfetti() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    confetti.forEach(c => {
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, c.r, 0, 2 * Math.PI);
+      ctx.fillStyle = c.color;
+      ctx.fill();
+      c.y += c.speed;
+      if (c.y > canvas.height) {
+        c.y = -10;
+        c.x = Math.random() * canvas.width;
+      }
+    });
+    requestAnimationFrame(drawConfetti);
+  }
+
+  drawConfetti();
+</script>
+
+</body>
+</html>

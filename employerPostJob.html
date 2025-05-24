@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkSyne - Post a Job</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="employerStyles.css">
+</head>
+<body>
+    <header>
+        <h1>WorkSyne</h1>
+        <a>Post a Job</a>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="employerDashboard.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="employerPostJob.html"><i class="fas fa-plus"></i> Post Job</a></li>
+            <li><a href="employerCandidate.html"><i class="fas fa-users"></i> Candidate</a></li>
+            <li><a href="employerCalender.html"><i class="fas fa-calendar"></i> Calendar</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="job-form">
+            <h3>Job Posting Form</h3>
+            <form id="jobPostForm" method="post">
+                <label for="companyName">Company Name</label>
+                <input type="text" id="companyName" name="companyName">
+
+                <label for="jobTitle">Job Title</label>
+                <input type="text" id="jobTitle" name="jobTitle">
+
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location">
+
+                <label for="jobType">Job Type</label>
+                <select id="jobType" name="jobType">
+                    <option value="">-- Select Type --</option>
+                    <option value="Full-Time">Full-Time</option>
+                    <option value="Part-Time">Part-Time</option>
+                    <option value="Internship">Internship</option>
+                    <option value="Contract">Contract</option>
+                </select>
+
+                <label for="experience">Experience Required (in years)</label>
+                <input type="number" id="experience" name="experience">
+
+                <label for="skills">Required Skills</label>
+                <input type="text" id="skills" name="skills">
+
+                <label for="salary">Salary Range</label>
+                <input type="text" id="salary" name="salary">
+
+                <label for="deadline">Application Deadline</label>
+                <input type="date" id="deadline" name="deadline">
+
+                <label for="email">Contact Email</label>
+                <input type="email" id="email" name="email">
+
+                <label for="description">Job Description</label>
+                <textarea id="description" name="description" rows="5"></textarea>
+
+                <button type="submit">Post Job</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function handleJobPostForm() {
+    // Find the form
+    var form = document.getElementById('jobPostForm');
+    if (!form) {
+        return; // Exit if form doesn't exist (not on employerPostJob.html)
+    }
+
+    // Add submit event listener
+    form.onsubmit = function() {
+        // Get form inputs
+        var companyName = document.getElementById('companyName').value;
+        var jobTitle = document.getElementById('jobTitle').value;
+        var location = document.getElementById('location').value;
+        var jobType = document.getElementById('jobType').value;
+        var experience = document.getElementById('experience').value;
+        var skills = document.getElementById('skills').value;
+        var salary = document.getElementById('salary').value;
+        var deadline = document.getElementById('deadline').value;
+        var email = document.getElementById('email').value;
+        var description = document.getElementById('description').value;
+
+        // Check if required fields are filled
+        if (companyName === '' || jobTitle === '' || jobType === '' || email === '') {
+            alert('Please fill in all required fields: Company Name, Job Title, Job Type, and Contact Email.');
+            return false; // Prevent form submission
+        }
+
+        // Show success message (replace with actual submission logic if needed)
+        alert('Job posted successfully!\n' +
+              'Company: ' + companyName + '\n' +
+              'Job Title: ' + jobTitle + '\n' +
+              'Location: ' + location);
+        return false; // Prevent page reload
+    };
+}
+    </script>
+</body>
+</html>

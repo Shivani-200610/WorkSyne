@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkSyne - Candidate Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="employerStyles.css">
+</head>
+<body>
+    <header>
+        <h1>WorkSyne</h1>
+        <a>Candidate Management</a>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="employerDashboard.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="employerPostJob.html"><i class="fas fa-plus"></i> Post Job</a></li>
+            <li><a href="employerCandidate.html"><i class="fas fa-users"></i> Candidate</a></li>
+            <li><a href="employerCalender.html"><i class="fas fa-calendar"></i> Calendar</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>245</h3>
+                <p>Total Applications</p>
+            </div>
+            <div class="stat-card">
+                <h3>8</h3>
+                <p>Accepted</p>
+            </div>
+            <div class="stat-card">
+                <h3>213</h3>
+                <p>Pending</p>
+            </div>
+            <div class="stat-card">
+                <h3>4</h3>
+                <p>Interviews Scheduled</p>
+            </div>
+        </div>
+        <div class="applications-container">
+            <div class="applications-table">
+                <h2><i class="fas fa-list"></i> Applications Received</h2>
+
+                <table>
+                    <tr>
+                        <th>Candidate</th>
+                        <th>Position</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="candidate-info">
+                                <div class="candidate-avatar">SJ</div>  Sarah Johnson
+                            </div>
+                        </td>
+                        <td>UI/UX Designer</td>
+                        <td>sarah@example.com</td>
+                        <td><span class="status-badge status-pending">Pending</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="view-btn" onclick="viewProfile(this)">View</button>
+                                <button class="accept-btn" onclick="accept(this)">Accept</button>
+                                <button class="reject-btn" onclick="reject(this)">Reject</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="candidate-info">
+                                <div class="candidate-avatar">ML</div>  Michael Lee
+                            </div>
+                        </td>
+                        <td>Frontend Developer</td>
+                        <td>michael@example.com</td>
+                        <td><span class="status-badge status-pending">Pending</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="view-btn" onclick="viewProfile(this)">View</button>
+                                <button class="accept-btn" onclick="accept(this)">Accept</button>
+                                <button class="reject-btn" onclick="reject(this)">Reject</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="candidate-info">
+                                <div class="candidate-avatar">EB</div>  Emma Brown
+                            </div>
+                        </td>
+                        <td>Data Analyst</td>
+                        <td>emma@example.com</td>
+                        <td><span class="status-badge status-pending">Pending</span></td>
+                        <td>
+                            <div class="action-buttons">
+                                <button class="view-btn" onclick="viewProfile(this)">View</button>
+                                <button class="accept-btn" onclick="accept(this)">Accept</button>
+                                <button class="reject-btn" onclick="reject(this)">Reject</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function accept(button) {
+        var row = button.parentElement.parentElement.parentElement;
+
+        var statusCell = row.cells[3];
+
+        var statusBadge = statusCell.querySelector('.status-badge');
+
+        var actionButtons = button.parentElement;
+
+        statusBadge.className = 'status-badge status-accepted';
+        statusBadge.textContent = 'Accepted';
+
+        var acceptButton = actionButtons.querySelector('.accept-btn');
+        var rejectButton = actionButtons.querySelector('.reject-btn');
+        acceptButton.disabled = true;
+        rejectButton.disabled = true;
+
+        button.textContent = 'Accepted';
+    }
+
+    function reject(button) {
+        var row = button.parentElement.parentElement.parentElement;
+
+        var statusCell = row.cells[3];
+
+        var statusBadge = statusCell.querySelector('.status-badge');
+
+        var actionButtons = button.parentElement;
+
+        statusBadge.className = 'status-badge status-rejected';
+        statusBadge.textContent = 'Rejected';
+
+        var acceptButton = actionButtons.querySelector('.accept-btn');
+        var rejectButton = actionButtons.querySelector('.reject-btn');
+        acceptButton.disabled = true;
+        rejectButton.disabled = true;
+
+        button.textContent = 'Rejected';
+    }
+
+    function viewProfile(button) {
+        var row = button.parentElement.parentElement.parentElement;
+
+        var candidateName = row.cells[0].textContent.trim();
+        var candidatePosition = row.cells[1].textContent.trim(); 
+        var candidateEmail = row.cells[2].textContent.trim(); 
+
+        alert(
+            'Profile Name: ' + candidateName + '\n' +
+            'Position: ' + candidatePosition + '\n' +
+            'Email ID: ' + candidateEmail
+        );
+    }
+    </script>
+</body>
+</html>
