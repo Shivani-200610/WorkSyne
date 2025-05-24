@@ -1,0 +1,302 @@
+<?php
+session_start();
+require_once 'connect.php';
+$error = '';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
+    $password = $_POST['password'];
+    $loginType = $_POST['loginType'];
+
+    try {
+        // Determine the table based on login type
+        if ($loginType === 'employee') {
+            $stmt = $pdo->prepare("SELECT * FROM Employee WHERE email = ?");
+        } else {
+            $stmt = $pdo->prepare("SELECT * FROM Employer WHERE email = ?");
+        }
+        $stmt->execute([$email]);
+        $user = $stmt->fetch();
+
+        if ($user && password_verify($password, $user['password'])) {
+            $_SESSION['user_email'] = $user['email'];
+            $_SESSION['login_type'] = $loginType;
+            header("Location: " . ($loginType === 'employee' ? 'employeeDashboard.html' : 'employerDashboard.html'));
+            exit;
+        } else {
+            $error = 'Invalid email or password';
+        }
+    } catch (PDOException $e) {
+        $error = 'An error occurred: ' . $e->getMessage();
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - WorkSyne</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #f0f2f5;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      background: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      font-family: 'Pacifico', cursive;
+      font-size: 24px;
+      color: #2A7DE1;
+    }
+
+    .tagline {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .icons {
+      display: flex;
+      gap: 20px;
+    }
+
+    .icons i {
+      color: #2A7DE1;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .login-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: calc(100vh - 80px);
+      padding: 2rem;
+    }
+
+    .login-box {
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 2.5rem;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+
+    .login-box h2 {
+      color: #2A7DE1;
+      margin-bottom: 1.5rem;
+      font-size: 24px;
+    }
+
+    .login-type {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1.5rem;
+    }
+
+    .login-type button {
+      flex: 1;
+      padding: 12px;
+      border: 2px solid #2A7DE1;
+      background: transparent;
+      color: #2A7DE1;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .login-type button.active {
+      background: #2A7DE1;
+      color: white;
+    }
+
+    .input-group {
+      margin-bottom: 1rem;
+      position: relative;
+    }
+
+    .input-group i {
+      position: absolute;
+      left: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 12px 12px 40px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #2A7DE1;
+    }
+
+    .login-btn {
+      background: #2A7DE1;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 15px;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .login-btn:hover {
+      background: #1A5BA3;
+    }
+
+    .register-link {
+      margin-top: 1.5rem;
+      display: block;
+      color: #2A7DE1;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .register-link:hover {
+      text-decoration: underline;
+    }
+
+    .social-login {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+    }
+
+    .social-login p {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .social-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .social-btn {
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .social-btn:hover {
+      background: #f8f9fa;
+      border-color: #2A7DE1;
+    }
+
+    .social-btn i {
+      font-size: 20px;
+    }
+
+    .google i { color: #DB4437; }
+    .linkedin i { color: #0077B5; }
+    .github i { color: #333; }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">WorkSyne</div>
+    <div class="tagline">Where Work and Synergy Meet</div>
+    <div class="icons">
+      <i class="fas fa-bell"></i>
+      <i class="fas fa-user-circle"></i>
+    </div>
+  </header>
+
+  <div class="login-container">
+    <div class="login-box">
+      <h2>Welcome Back!</h2>
+      <div class="login-type">
+        <button id="loginEmployee" class="active">Employee</button>
+        <button id="loginEmployer">Employer</button>
+      </div>
+      <?php if (!empty($error)): ?>
+        <div class="error"><?php echo htmlspecialchars($error); ?></div>
+      <?php endif; ?>
+      <form id="loginForm" method="POST" action="login.php">
+        <input type="hidden" name="loginType" id="loginType" value="employee">
+        <div class="input-group">
+          <i class="fas fa-envelope"></i>
+          <input type="email" name="email" placeholder="Email" required />
+        </div>
+        <div class="input-group">
+          <i class="fas fa-lock"></i>
+          <input type="password" name="password" placeholder="Password" required />
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+      </form>
+      <a href="register.php" class="register-link">New to WorkSyne? Create an account</a>
+      
+      <div class="social-login">
+        <p>Or continue with</p>
+        <div class="social-buttons">
+          <button class="social-btn google">
+            <i class="fab fa-google"></i>
+          </button>
+          <button class="social-btn linkedin">
+            <i class="fab fa-linkedin"></i>
+          </button>
+          <button class="social-btn github">
+            <i class="fab fa-github"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('loginEmployee').addEventListener('click', function() {
+      document.getElementById('loginType').value = 'employee';
+      this.classList.add('active');
+      document.getElementById('loginEmployer').classList.remove('active');
+    });
+
+    document.getElementById('loginEmployer').addEventListener('click', function() {
+      document.getElementById('loginType').value = 'employer';
+      this.classList.add('active');
+      document.getElementById('loginEmployee').classList.remove('active');
+    });
+  </script>
+</body>
+</html>
